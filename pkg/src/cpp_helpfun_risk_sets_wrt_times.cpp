@@ -18,6 +18,7 @@ List cpp_helpfun_risk_sets_wrt_times(NumericVector timeslR, NumericVector timesr
 	if(timesr[i] <= timesr[j]){
 	  atriskatti.push_back(1);
 	  atriskatti[countindex] = j+1; // +1 because of R index syntax.
+	  countindex = countindex+1;
 	}
       }
     }
