@@ -12,7 +12,7 @@ NumericVector cpp_helpfun_log_pl(NumericVector etahat, NumericMatrix numerator) 
       logpli[i] = logpli[i]+(expeta[j]*indicatormatrix(i,j));
     }
   }
-  logpli = log(1.0+logpli);
+  logpli = log(0.000001+logpli);
   logpli = eta-logpli;
   return(wrap(logpli));
 }

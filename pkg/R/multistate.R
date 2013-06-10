@@ -18,6 +18,7 @@ multistate <- function(numerator = numerator, denominator = denominator,
     rm(zi.list)
     zi <- apply(zi, MARGIN=1, FUN=sum)
     zi <- 1-zi
+    zi <- zi - mean(zi)
     return(zi)}
   #########################################################################
   ## loss a.k.a. negative log likelihood of a cox type multi state model ##

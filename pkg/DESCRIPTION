@@ -1,8 +1,8 @@
 Package: gamboostMSM
 Type: Package
 Title: Estimating multi state models using gamboost()
-Version: 0.0.2
-Date: 2013-06-05
+Version: 0.0.3
+Date: 2013-06-10
 Author: Holger Reulen
 Maintainer: Holger Reulen <hreulen@uni-goettingen.de>
 Description: Provides features to use function gamboost() from  package mboost for estimation of multi state models
