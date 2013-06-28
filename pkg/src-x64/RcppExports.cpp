@@ -5,52 +5,74 @@
 
 using namespace Rcpp;
 
+// cpp_helpfun_breslow
+NumericVector cpp_helpfun_breslow(NumericVector etahat, NumericMatrix numerator);
+RcppExport SEXP gamboostMSM_cpp_helpfun_breslow(SEXP etahatSEXP, SEXP numeratorSEXP) {
+BEGIN_RCPP
+    Rcpp::RNGScope __rngScope;
+    NumericVector etahat = Rcpp::as<NumericVector >(etahatSEXP);
+    NumericMatrix numerator = Rcpp::as<NumericMatrix >(numeratorSEXP);
+    NumericVector __result = cpp_helpfun_breslow(etahat, numerator);
+    return Rcpp::wrap(__result);
+END_RCPP
+}
+// cpp_helpfun_breslow_risk_sets
+List cpp_helpfun_breslow_risk_sets(List risksetsR, NumericVector fromR, NumericVector fromqR);
+RcppExport SEXP gamboostMSM_cpp_helpfun_breslow_risk_sets(SEXP risksetsRSEXP, SEXP fromRSEXP, SEXP fromqRSEXP) {
+BEGIN_RCPP
+    Rcpp::RNGScope __rngScope;
+    List risksetsR = Rcpp::as<List >(risksetsRSEXP);
+    NumericVector fromR = Rcpp::as<NumericVector >(fromRSEXP);
+    NumericVector fromqR = Rcpp::as<NumericVector >(fromqRSEXP);
+    List __result = cpp_helpfun_breslow_risk_sets(risksetsR, fromR, fromqR);
+    return Rcpp::wrap(__result);
+END_RCPP
+}
 // cpp_helpfun_log_pl
 NumericVector cpp_helpfun_log_pl(NumericVector etahat, NumericMatrix numerator);
 RcppExport SEXP gamboostMSM_cpp_helpfun_log_pl(SEXP etahatSEXP, SEXP numeratorSEXP) {
-  BEGIN_RCPP
+BEGIN_RCPP
     Rcpp::RNGScope __rngScope;
-  NumericVector etahat = Rcpp::as<NumericVector >(etahatSEXP);
-  NumericMatrix numerator = Rcpp::as<NumericMatrix >(numeratorSEXP);
-  NumericVector __result = cpp_helpfun_log_pl(etahat, numerator);
-  return Rcpp::wrap(__result);
-  END_RCPP
-    }
+    NumericVector etahat = Rcpp::as<NumericVector >(etahatSEXP);
+    NumericMatrix numerator = Rcpp::as<NumericMatrix >(numeratorSEXP);
+    NumericVector __result = cpp_helpfun_log_pl(etahat, numerator);
+    return Rcpp::wrap(__result);
+END_RCPP
+}
 // cpp_helpfun_risk_sets_wrt_times
 List cpp_helpfun_risk_sets_wrt_times(NumericVector timeslR, NumericVector timesrR);
 RcppExport SEXP gamboostMSM_cpp_helpfun_risk_sets_wrt_times(SEXP timeslRSEXP, SEXP timesrRSEXP) {
-  BEGIN_RCPP
+BEGIN_RCPP
     Rcpp::RNGScope __rngScope;
-  NumericVector timeslR = Rcpp::as<NumericVector >(timeslRSEXP);
-  NumericVector timesrR = Rcpp::as<NumericVector >(timesrRSEXP);
-  List __result = cpp_helpfun_risk_sets_wrt_times(timeslR, timesrR);
-  return Rcpp::wrap(__result);
-  END_RCPP
-    }
+    NumericVector timeslR = Rcpp::as<NumericVector >(timeslRSEXP);
+    NumericVector timesrR = Rcpp::as<NumericVector >(timesrRSEXP);
+    List __result = cpp_helpfun_risk_sets_wrt_times(timeslR, timesrR);
+    return Rcpp::wrap(__result);
+END_RCPP
+}
 // cpp_helpfun_risk_sets_wrt_times_and_states
 List cpp_helpfun_risk_sets_wrt_times_and_states(List risksetsR, NumericVector fromR, NumericVector toR, NumericVector fromqR, NumericVector toqR);
 RcppExport SEXP gamboostMSM_cpp_helpfun_risk_sets_wrt_times_and_states(SEXP risksetsRSEXP, SEXP fromRSEXP, SEXP toRSEXP, SEXP fromqRSEXP, SEXP toqRSEXP) {
-  BEGIN_RCPP
+BEGIN_RCPP
     Rcpp::RNGScope __rngScope;
-  List risksetsR = Rcpp::as<List >(risksetsRSEXP);
-  NumericVector fromR = Rcpp::as<NumericVector >(fromRSEXP);
-  NumericVector toR = Rcpp::as<NumericVector >(toRSEXP);
-  NumericVector fromqR = Rcpp::as<NumericVector >(fromqRSEXP);
-  NumericVector toqR = Rcpp::as<NumericVector >(toqRSEXP);
-  List __result = cpp_helpfun_risk_sets_wrt_times_and_states(risksetsR, fromR, toR, fromqR, toqR);
-  return Rcpp::wrap(__result);
-  END_RCPP
-    }
+    List risksetsR = Rcpp::as<List >(risksetsRSEXP);
+    NumericVector fromR = Rcpp::as<NumericVector >(fromRSEXP);
+    NumericVector toR = Rcpp::as<NumericVector >(toRSEXP);
+    NumericVector fromqR = Rcpp::as<NumericVector >(fromqRSEXP);
+    NumericVector toqR = Rcpp::as<NumericVector >(toqRSEXP);
+    List __result = cpp_helpfun_risk_sets_wrt_times_and_states(risksetsR, fromR, toR, fromqR, toqR);
+    return Rcpp::wrap(__result);
+END_RCPP
+}
 // cpp_helpfun_z_i
 NumericVector cpp_helpfun_z_i(NumericVector etahat, NumericMatrix numerator, List denominator);
 RcppExport SEXP gamboostMSM_cpp_helpfun_z_i(SEXP etahatSEXP, SEXP numeratorSEXP, SEXP denominatorSEXP) {
-  BEGIN_RCPP
+BEGIN_RCPP
     Rcpp::RNGScope __rngScope;
-  NumericVector etahat = Rcpp::as<NumericVector >(etahatSEXP);
-  NumericMatrix numerator = Rcpp::as<NumericMatrix >(numeratorSEXP);
-  List denominator = Rcpp::as<List >(denominatorSEXP);
-  NumericVector __result = cpp_helpfun_z_i(etahat, numerator, denominator);
-  return Rcpp::wrap(__result);
-  END_RCPP
-    }
-
+    NumericVector etahat = Rcpp::as<NumericVector >(etahatSEXP);
+    NumericMatrix numerator = Rcpp::as<NumericMatrix >(numeratorSEXP);
+    List denominator = Rcpp::as<List >(denominatorSEXP);
+    NumericVector __result = cpp_helpfun_z_i(etahat, numerator, denominator);
+    return Rcpp::wrap(__result);
+END_RCPP
+}

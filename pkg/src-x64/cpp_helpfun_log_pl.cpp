@@ -9,10 +9,10 @@ NumericVector cpp_helpfun_log_pl(NumericVector etahat, NumericMatrix numerator) 
   NumericVector logpli(n);
   for(int i=0; i<n; i++){
     for(int j=0; j<n; j++){
-      logpli[i] = logpli[i]+(expeta[j]*indicatormatrix(i,j));
+      logpli[i] = logpli[i]+(expeta[j]*indicatormatrix(j,i));
     }
   }
-  logpli = log(1.0+logpli);
+  logpli = log(logpli);
   logpli = eta-logpli;
   return(wrap(logpli));
 }
