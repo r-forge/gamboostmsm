@@ -6,17 +6,17 @@ toolbox <- function(tool, input){
   ## helpindex for log partial likelihood ##
   ##########################################
   if(tool == "hi.for.log.pl"){
-    if(!(all(names(input) == c("possible.trans.from.and.to", "dat")))){
-      stop("for tool 'hi.for.log.pl', please provide input argument list containing 'possible.trans.from.and.to' and 'dat'!", 
+    if(!(all(names(input) == c("possible.trans.from.and.to", "data")))){
+      stop("for tool 'hi.for.log.pl', please provide input argument list containing 'possible.trans.from.and.to' and 'data'!", 
            call. = FALSE)
     }
-    possible.trans.from.and.to == input$possible.trans.from.and.to
-    dat == input$dat
-    hi.for.log.pl <- rep(NA, nrow(d))
-    for(hi in 1:(nrow(d))){
-      if((d$to[hi] != 99) & (d$from[hi] != 99)){
-        hi.for.log.pl[hi] <- which((possible.trans.from.and.to[, 1] == d$from[hi]) &
-                                    (possible.trans.from.and.to[, 2] == d$to[hi]))
+    possible.trans.from.and.to <- input$possible.trans.from.and.to
+    data <- input$data
+    hi.for.log.pl <- rep(NA, nrow(data))
+    for(hi in 1:(nrow(data))){
+      if((data$to[hi] != 99) & (data$from[hi] != 99)){
+        hi.for.log.pl[hi] <- which((possible.trans.from.and.to[, 1] == data$from[hi]) &
+                                    (possible.trans.from.and.to[, 2] == data$to[hi]))
       }
     }
     output <- list(hi.for.log.pl = hi.for.log.pl)
@@ -25,14 +25,14 @@ toolbox <- function(tool, input){
   ## predict (non)linear covariate effect f of x ##
   #################################################
   if(tool == "predict.f.x"){
-    if(!(all(names(input) == c("x", "trans", "mod", "dat", "seq.length")))){
-      stop("for tool 'predict.f.x', please provide input argument list containing 'x', 'trans', 'mod', 'dat', 'seq.length'!", 
+    if(!(all(names(input) == c("x", "trans", "mod", "data", "seq.length")))){
+      stop("for tool 'predict.f.x', please provide input argument list containing 'x', 'trans', 'mod', 'data', 'seq.length'!", 
            call. = FALSE)
     }
     x <- input$x
     trans <- input$trans
     mod <- input$mod
-    dat <- input$dat
+    data <- input$data
     seq.length <- input$seq.length
     f.x <- rep(0, seq.length)
     for(bl in 1:length(mod$baselearner)){
@@ -45,7 +45,7 @@ toolbox <- function(tool, input){
             ho <- NULL
             if(any(bl %in% unique(mod$xselect()))){
               var.names <- mod$baselearner[[bl]]$get_names()
-              range.x <- range(d[, var.names[1]])
+              range.x <- range(data[, var.names[1]])
               newd <- data.frame(x = seq(range.x[1], range.x[2], length=seq.length))
               names(newd)[1] <- var.names[1]
               if(length(var.names)>1.5){
@@ -64,7 +64,7 @@ toolbox <- function(tool, input){
           ho <- NULL
           if(any(bl %in% unique(mod$xselect()))){
             var.names <- mod$baselearner[[bl]]$get_names()
-            range.x <- range(d[, var.names[1]])
+            range.x <- range(data[, var.names[1]])
             newd <- data.frame(x = seq(range.x[1], range.x[2], length=seq.length))
             names(newd)[1] <- var.names[1]
             if(length(var.names)>1.5){
@@ -78,7 +78,7 @@ toolbox <- function(tool, input){
         }
       }
     }
-    range.x <- range(d[, x])
+    range.x <- range(data[, x])
     output = list(y=f.x,
                   x=seq(range.x[1], range.x[2], length=seq.length))
   }
