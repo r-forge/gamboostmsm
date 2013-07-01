@@ -4,12 +4,12 @@
 \description{This function calculates the Breslow estimator for the
   cumulative hazard rate, given a fitted multi state model.}
 \usage{
-breslow(model, m, data, from.q, to.q)
+breslow(model, m, d, from.q, to.q)
 }
 \arguments{
 \item{model}{ a fitted multi state model using \code{gamboost(..., family=multistate(...))}.}  
 \item{m}{ an integer defing at which boosting iteration to evaluate.}
-\item{data}{ a data set including variables \code{entry} (\bold{left truncation time}),
+\item{d}{ a data frame including variables \code{entry} (\bold{left truncation time}),
   \code{exit} (\bold{event time}), \code{from} (\bold{initial state}),
   and \code{to} (\bold{final state}),}
 \item{from.q}{ denoting the initial state of transition/event q,}
